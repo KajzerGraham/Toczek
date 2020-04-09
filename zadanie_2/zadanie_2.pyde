@@ -10,47 +10,35 @@ def setup():
     
     for k, w in slownik_kolorow.items():
         lista_kolorow.append(w)
-    global x
+    global x, y, dx, dy, iteracja, bok_kwadratu # można też w jednej linii
     x = 50
-    global y
     y = 300
-    global dx
     dx = 2
-    global dy
     dy = 3
-    global iteracja
     iteracja = 0
+    bok_kwadratu = 100 # z taką zmienną kod będzie czytelniejszy i wystarczy zmienić tylko w tymmiejscu aby zmienić jego rozmiar a wszędzie dalej działało
     clear()
 def draw():
     background(0)
-    global dx
-    global dy
-    global x
-    global y
-    global iteracja
-    iteracja +=1  
+    global dx, dy, x, y, iteracja, bok_kwadratu
+    iteracja +=1
     
     fill(*lista_kolorow[iteracja%len(lista_kolorow)])
-    rect(x,y,100,100)
+    rect(x,y,bok_kwadratu, bok_kwadratu)
     x += dx
     y += dy
     
-    if(x > (width-50)):
+    if(x > (width-bok_kwadratu/2)):
         dx = -2    
-    elif(x < (50)):
+    elif(x < (bok_kwadratu/2)):
         dx = 2
         
-    if(y > (height-50)):
+    if(y > (height-bok_kwadratu/2)):
         dy = -3    
-    elif(y < (50)):
+    elif(y < (bok_kwadratu/2)):
         dy = 3
         
     if mousePressed:
-        exit()    
-    
-       
-           
-    
-    
-    
-    
+        exit()
+        
+# 2 pkt
